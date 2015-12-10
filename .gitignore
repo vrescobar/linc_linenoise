@@ -1,0 +1,7 @@
+.idea/
+cpp/
+tmp/
+test/cpp/
+test/history.txt
+history.txt
+linenoise.iml

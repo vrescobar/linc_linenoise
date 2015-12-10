@@ -1,0 +1,6 @@
+-main Test.hx
+-cpp cpp/
+-cp ../
+-debug
+-lib hxcpp
+-cmd cpp/Test-Debug

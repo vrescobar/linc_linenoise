@@ -1,0 +1,8 @@
+<xml>
+<files id='haxe'>
+    <compilerflag value='-I${LINC_LINENOISE_PATH}lib/linenoise/'/>
+    <file name="${LINC_LINENOISE_PATH}lib/linenoise/linenoise.c" />
+</files>
+<target id="haxe">
+</target>
+</xml>
