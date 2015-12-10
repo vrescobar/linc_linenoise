@@ -11,7 +11,7 @@ This library works with the Haxe cpp target only.
 
 ### Install
 
-`haxelib git linc_linenoise ${this git repo}`
+`haxelib git linc_linenoise https://github.com/vrescobar/linc_linenoise.git`
 
 ### Example usage
 
