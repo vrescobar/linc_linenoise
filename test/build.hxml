@@ -3,4 +3,5 @@
 -cp ../
 -debug
 -lib hxcpp
--cmd cpp/Test-Debug
+# Execute IO directly from here for some reason doesn't echoe properly
+-cmd echo "Please execute the next file in order to run the example: cpp/Test-Debug"
