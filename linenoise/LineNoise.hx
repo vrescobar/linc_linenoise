@@ -1,4 +1,5 @@
 package linenoise;
+import haxe.io.Eof;
 
 @:keep
 @:structAccess
@@ -20,7 +21,14 @@ extern class LineNoise {
 
     @:native("linenoise")
     static function _linenoise(prompt:cpp.ConstCharStar):cpp.ConstCharStar;
-    static inline function linenoise(prompt:String):String return cast _linenoise(prompt);
+    static inline function linenoise(prompt:String):String {
+            var pointer:cpp.ConstCharStar = _linenoise(prompt);
+            if (pointer.toPointer() == cast 0) {
+                throw new haxe.io.Eof(); }
+            else {
+                return cast pointer;
+            }
+    }
 
     @:native("linenoiseHistoryAdd")
     static function linenoiseHistoryAdd(line:cpp.ConstCharStar):Int;
@@ -33,6 +41,13 @@ extern class LineNoise {
 
     @:native("linenoiseHistoryLoad")
     static function linenoiseHistoryLoad(filename:cpp.ConstCharStar):Int;
+
+    //@:native("linenoiseSetCompletionCallback")
+    //static function linenoiseSetCompletionCallback(linenoiseCompletionCallback:cpp.Callable):Void ;
+
+    //@:native("linenoiseAddCompletion")
+    //static function linenoiseAddCompletion(linenoiseCompletions:cpp.Callable, const char *):Void;
+
 } //LineNoise
 
 
