@@ -10,7 +10,7 @@ package linenoise;
 
 extern class LineNoise {
     @:native("linenoiseClearScreen")
-    static function linenoiseClearScreen(): Void;
+    static function linenoiseClearScreen():Void;
 
     @:native("linenoiseSetMultiLine")
     static function linenoiseSetMultiLine(ml:Int):Void;
@@ -19,9 +19,20 @@ extern class LineNoise {
     static function linenoisePrintKeyCodes():Void;
 
     @:native("linenoise")
-    static function linenoise(prompt:String):String;
+    static function _linenoise(prompt:cpp.ConstCharStar):cpp.ConstCharStar;
+    static inline function linenoise(prompt:String):String return cast _linenoise(prompt);
 
+    @:native("linenoiseHistoryAdd")
+    static function linenoiseHistoryAdd(line:cpp.ConstCharStar):Int;
 
+    @:native("linenoiseHistorySetMaxLen")
+    static function linenoiseHistorySetMaxLen(len:Int):Int;
+
+    @:native("linenoiseHistorySave")
+    static function linenoiseHistorySave(filename:cpp.ConstCharStar):Int;
+
+    @:native("linenoiseHistoryLoad")
+    static function linenoiseHistoryLoad(filename:cpp.ConstCharStar):Int;
 } //LineNoise
 
 
@@ -34,10 +45,4 @@ typedef struct linenoiseCompletions {
 typedef void(linenoiseCompletionCallback)(const char *, linenoiseCompletions *);
 void linenoiseSetCompletionCallback(linenoiseCompletionCallback *);
 void linenoiseAddCompletion(linenoiseCompletions *, const char *);
-
-int linenoiseHistoryAdd(const char *line);
-int linenoiseHistorySetMaxLen(int len);
-int linenoiseHistorySave(const char *filename);
-int linenoiseHistoryLoad(const char *filename);
-
 */

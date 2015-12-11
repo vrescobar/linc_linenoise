@@ -3,12 +3,18 @@ import Sys;
 
 class Test {
     static function main() {
-        var stdin = Sys.stdin();
-        trace("Hello Terminal, ready to clean?");
-        //var a = stdin.readLine();
-        LineNoise.linenoiseClearScreen();
+        //trace("Hello Terminal, ready to clean?");
+        //LineNoise.linenoiseSetMultiLine(1);
+        //LineNoise.linenoiseClearScreen();
         LineNoise.linenoisePrintKeyCodes();
-        trace("Bye!");
+        Sys.println("Type 'quit' or end-of-line to end the session.");
+        while (true) {
+            var a:String = LineNoise.linenoise("prompt> ");
+            if (a == "quit") break;
+            if (a == "") continue;
+            trace(a);
+            Sys.println(" " + a);
+        }
 
     }
 }
